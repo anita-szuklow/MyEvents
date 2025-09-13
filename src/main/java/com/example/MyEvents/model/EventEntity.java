@@ -14,17 +14,20 @@ public class EventEntity {
     String description;
     LocalDate date;
     int capacity;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "location_id")
     LocationEntity location;
-    @OneToMany
+    @OneToMany(mappedBy = "eventEntity")
     Set<RegistrationEntity> registrationEntities;
 
-    public EventEntity(Long id, String name, String description, LocationEntity location) {
+    public EventEntity(Long id, String name, String description, LocalDate date, int capacity, LocationEntity location, Set<RegistrationEntity> registrationEntities) {
         this.id = id;
         this.name = name;
         this.description = description;
+        this.date = date;
+        this.capacity = capacity;
         this.location = location;
+        this.registrationEntities = registrationEntities;
     }
 
     public LocationEntity getLocation() {
@@ -60,5 +63,29 @@ public class EventEntity {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+
+    public int getCapacity() {
+        return capacity;
+    }
+
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
+    }
+
+    public Set<RegistrationEntity> getRegistrationEntities() {
+        return registrationEntities;
+    }
+
+    public void setRegistrationEntities(Set<RegistrationEntity> registrationEntities) {
+        this.registrationEntities = registrationEntities;
     }
 }
