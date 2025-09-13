@@ -7,16 +7,14 @@ public class Location {
     private String name;
     private String city;
     private String address;
-    private List<Event> events;
 
     public Location() {}
 
-    public Location(Long id, String name, String city, String address, List<Event> events) {
+    public Location(Long id, String name, String city, String address) {
         this.id = id;
         this.name = name;
         this.city = city;
         this.address = address;
-        this.events = events;
     }
 
     public Long getId() {
@@ -51,11 +49,4 @@ public class Location {
         this.address = address;
     }
 
-    public List<Event> getEvents() {
-        return events;
-    }
-
-    public void setEvents(List<Event> events) {
-        this.events = events;
-    }
 }

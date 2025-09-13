@@ -9,18 +9,18 @@ public class Event {
     private String description;
     private LocalDate date;
     private int capacity;
-    private Location location;
+    private Long locationId;
     Set<Registration> registrations;
 
     public Event(){}
 
-    public Event(Long id, String name, String description, LocalDate date, int capacity, Location location, Set<Registration> registrations) {
+    public Event(Long id, String name, String description, LocalDate date, int capacity, Long locationId, Set<Registration> registrations) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.date = date;
         this.capacity = capacity;
-        this.location = location;
+        this.locationId = locationId;
         this.registrations = registrations;
     }
 
@@ -48,12 +48,12 @@ public class Event {
         this.description = description;
     }
 
-    public Location getLocation() {
-        return location;
+    public Long getLocationId() {
+        return locationId;
     }
 
-    public void setLocation(Location location) {
-        this.location = location;
+    public void setLocation(Long locationId) {
+        this.locationId = locationId;
     }
 
     public LocalDate getDate() {

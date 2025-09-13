@@ -43,10 +43,6 @@ public class LocationService {
         entity.setName(location.getName());
         entity.setCity(location.getCity());
         entity.setAddress(location.getAddress());
-        entity.setEvents(location.getEvents()
-                .stream()
-                .map(EventMapper::toEntity)
-                .collect(Collectors.toList()));
         return LocationMapper.toDto(locationRepository.save(entity));
     }
 

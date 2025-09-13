@@ -12,17 +12,14 @@ public class LocationEntity {
     private String name;
     private String city;
     private String address;
-    @OneToMany
-    private List<EventEntity> events;
 
     public LocationEntity() {}
 
-    public LocationEntity(Long id, String name, String city, String address, List<EventEntity> events) {
+    public LocationEntity(Long id, String name, String city, String address) {
         this.id = id;
         this.name = name;
         this.city = city;
         this.address = address;
-        this.events = events;
     }
 
     public Long getId() {
@@ -57,11 +54,4 @@ public class LocationEntity {
         this.address = address;
     }
 
-    public List<EventEntity> getEvents() {
-        return events;
-    }
-
-    public void setEvents(List<EventEntity> events) {
-        this.events = events;
-    }
 }
