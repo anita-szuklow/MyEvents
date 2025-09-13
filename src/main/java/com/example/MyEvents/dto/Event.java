@@ -1,6 +1,7 @@
 package com.example.MyEvents.dto;
 
 import java.time.LocalDate;
+import java.util.Set;
 
 public class Event {
     private Long id;
