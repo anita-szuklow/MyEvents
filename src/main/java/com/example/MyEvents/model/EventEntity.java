@@ -2,6 +2,9 @@ package com.example.MyEvents.model;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
+import java.util.Set;
+
 @Entity
 public class EventEntity {
     @Id
@@ -9,8 +12,13 @@ public class EventEntity {
     Long id;
     String name;
     String description;
+    LocalDate date;
+    int capacity;
     @ManyToOne
+    @JoinColumn(name = "location_id")
     LocationEntity location;
+    @OneToMany
+    Set<RegistrationEntity> registrationEntities;
 
     public EventEntity(Long id, String name, String description, LocationEntity location) {
         this.id = id;
