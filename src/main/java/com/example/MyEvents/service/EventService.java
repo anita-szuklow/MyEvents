@@ -2,6 +2,7 @@ package com.example.MyEvents.service;
 
 import com.example.MyEvents.EventMapper;
 import com.example.MyEvents.LocationMapper;
+import com.example.MyEvents.RegistrationMapper;
 import com.example.MyEvents.dto.Event;
 import com.example.MyEvents.exception.EventNotFoundException;
 import com.example.MyEvents.model.EventEntity;
@@ -45,7 +46,14 @@ public class EventService {
                 .orElseThrow(() -> new EventNotFoundException(id));
         entity.setName(updatedEvent.getName());
         entity.setDescription(updatedEvent.getDescription());
+        entity.setDate(updatedEvent.getDate());
+        entity.setCapacity(updatedEvent.getCapacity());
         entity.setLocation(LocationMapper.toEntity(updatedEvent.getLocation()));
+        entity.setRegistrationEntities(updatedEvent.getRegistrations()
+                .stream()
+                .map(RegistrationMapper::toEntity)
+                .collect(Collectors.toSet())
+        );
 
         return EventMapper.toDto(eventRepository.save(entity));
     }
